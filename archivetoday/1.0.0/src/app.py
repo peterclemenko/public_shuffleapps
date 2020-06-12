@@ -27,19 +27,6 @@ class ArchiveToday(AppBase):
 #        return archive_url
          return target
 
-# Run the actual thing after we've checked params
-def run(request):
-    action = request.get_json() 
-    print(action)
-    print(type(action))
-    authorization_key = action.get("authorization")
-    current_execution_id = action.get("execution_id")
-	
-    if action and "name" in action and "app_name" in action:
-        asyncio.run(ArchiveToday.run(action), debug=True)
-        return f'Attempting to execute function {action["name"]} in app {action["app_name"]}' 
-    else:
-        return f'Invalid action'
 
 if __name__ == "__main__":
     asyncio.run(ArchiveToday.run(), debug=True)
