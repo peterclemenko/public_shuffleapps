@@ -9,7 +9,7 @@ contact_info:
   email: pclemenkoiii@gmail.com
 actions:
   - name: archive_target
-    description: Repeats the call parameter
+    description: Archives the target URL
     parameters:
       - name: target
         description: URL of the target to archive
