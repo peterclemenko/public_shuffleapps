@@ -4,7 +4,6 @@ name: Archive.today
 description: Archive.Today app 
 environment: cloud
 contact_info:
-contact_info:
   name: Peter Clemenko
   url: https://github.com/aoighost
   email: pclemenkoiii@gmail.com
