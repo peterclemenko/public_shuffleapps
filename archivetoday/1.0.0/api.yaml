@@ -1,6 +1,6 @@
 walkoff_version: 1.0.0
 app_version: 1.0.0
-name: archivetoday
+name: Archive.today
 description: Archive.Today app 
 environment: cloud
 contact_info:
