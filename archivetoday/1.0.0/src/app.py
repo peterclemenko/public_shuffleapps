@@ -23,8 +23,9 @@ class ArchiveToday(AppBase):
 
 
     async def archive_target(self, target, data):
-        archive_url = archiveis.capture("target")
-        return archive_url
+        #archive_url = archiveis.capture("target")
+#        return archive_url
+         return target
 
 # Run the actual thing after we've checked params
 def run(request):
