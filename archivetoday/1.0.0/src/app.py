@@ -34,18 +34,5 @@ class ArchiveToday(AppBase):
         self.logger.info(message)
         return target
 
-
-    async def hello_world(self):
-        """
-        Returns Hello World from the hostname the action is run on
-        :return: Hello World from your hostname
-        """
-        message = f"Hello World from {socket.gethostname()} in workflow {self.current_execution_id}!"
-
-        # This logs to the docker logs
-        self.logger.info(message)
-
-        return message
-
 if __name__ == "__main__":
     asyncio.run(ArchiveToday.run(), debug=True)
