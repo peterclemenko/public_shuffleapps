@@ -23,11 +23,8 @@ class ArchiveToday(AppBase):
 
 
     async def archive_target(self, target, data):
-        url = "https://api.passivetotal.org/v2/project"
-        auth = (username, apikey)
-        print(data)
-        
-        return archive_url = archiveis.capture("target")
+        archive_url = archiveis.capture("target")
+        return archive_url
 
 # Run the actual thing after we've checked params
 def run(request):
@@ -38,7 +35,7 @@ def run(request):
     current_execution_id = action.get("execution_id")
 	
     if action and "name" in action and "app_name" in action:
-        asyncio.run(Passivetotal.run(action), debug=True)
+        asyncio.run(ArchiveToday.run(action), debug=True)
         return f'Attempting to execute function {action["name"]} in app {action["app_name"]}' 
     else:
         return f'Invalid action'
