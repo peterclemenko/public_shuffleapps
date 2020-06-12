@@ -9,7 +9,7 @@ from walkoff_app_sdk.app_base import AppBase
 
 class ArchiveToday(AppBase):
     __version__ = "1.0.0"
-    app_name = "archivetoday"  
+    app_name = "Archive.today"    # this needs to match "name" in api.yaml
 
     def __init__(self, redis, logger, console_logger=None):
         """
@@ -25,8 +25,27 @@ class ArchiveToday(AppBase):
     async def archive_target(self, target, data):
         #archive_url = archiveis.capture("target")
 #        return archive_url
+        """
+        Returns log of what was archived
+        """
+        message = f"target {target} has been archived"
+
+        # This logs to the docker logs
+        self.logger.info(message)
          return target
 
+
+    async def hello_world(self):
+        """
+        Returns Hello World from the hostname the action is run on
+        :return: Hello World from your hostname
+        """
+        message = f"Hello World from {socket.gethostname()} in workflow {self.current_execution_id}!"
+
+        # This logs to the docker logs
+        self.logger.info(message)
+
+        return message
 
 if __name__ == "__main__":
     asyncio.run(ArchiveToday.run(), debug=True)
