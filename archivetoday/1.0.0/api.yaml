@@ -8,8 +8,8 @@ contact_info:
   url: https://github.com/aoighost
   email: "aoighost137@gmail.com"
 actions:
-  - name: archive_url 
-    description: Uses Archive.is to archive a url 
+  - name: archive_target 
+    description: Uses Archive.is to archive a target 
     parameters:
       - name: target
         description: URL of the target to archive

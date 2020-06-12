@@ -32,7 +32,7 @@ class ArchiveToday(AppBase):
 
         # This logs to the docker logs
         self.logger.info(message)
-         return target
+        return target
 
 
     async def hello_world(self):
