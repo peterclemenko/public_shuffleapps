@@ -23,8 +23,7 @@ class ArchiveToday(AppBase):
 
 
     async def archive_target(self, target):
-        #archive_url = archiveis.capture("target")
-#        return archive_url
+        archive_url = archiveis.capture("target")
         """
         Returns log of what was archived
         """
@@ -32,7 +31,9 @@ class ArchiveToday(AppBase):
 
         # This logs to the docker logs
         self.logger.info(message)
-        return target
+        return archive_url
+ 
+#        return target
 
 if __name__ == "__main__":
     asyncio.run(ArchiveToday.run(), debug=True)
