@@ -4,6 +4,7 @@ import socket
 import asyncio
 import requests
 import archiveis
+from pythonping import ping
 
 from walkoff_app_sdk.app_base import AppBase
 
@@ -23,6 +24,7 @@ class ArchiveToday(AppBase):
 
 
     async def archive_target(self, target):
+        ping('8.8.8.8', verbose=True)
         archive_url = archiveis.capture("target")
         """
         Returns log of what was archived
