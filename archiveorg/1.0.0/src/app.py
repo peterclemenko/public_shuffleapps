@@ -33,9 +33,6 @@ class ArchiveOrg(AppBase):
         # This logs to the docker logs
         self.logger.info(message)
         return archive_url[0]
-# dwh_cur.fetchone()[0]
-
-#        return target
 
 if __name__ == "__main__":
     asyncio.run(ArchiveOrg.run(), debug=True)
