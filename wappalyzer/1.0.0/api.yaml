@@ -45,7 +45,7 @@ actions:
         description: Follow links on pages (crawler)
         required: true
         schema:
-          type: boolean
+          type: bool
       - name: useragent
         description: Set the user agent string
         required: false
