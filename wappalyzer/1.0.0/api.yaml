@@ -44,6 +44,8 @@ actions:
       - name: recursive
         description: Follow links on pages (crawler)
         required: true
+        multiline: false 
+        example: "false"
         schema:
           type: bool
       - name: useragent
