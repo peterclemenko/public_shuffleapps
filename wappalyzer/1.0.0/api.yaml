@@ -43,7 +43,7 @@ actions:
           type: string        
       - name: recursive
         description: Follow links on pages (crawler)
-        required: true
+        required: false
         multiline: false 
         example: "false"
         schema:
