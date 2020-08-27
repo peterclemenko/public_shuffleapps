@@ -3,6 +3,12 @@ app_version: 1.0.0
 name: Wappalyzer
 description: Wappalyzer app 
 environment: cloud
+tags:
+  - analyze
+  - scan 
+categories:
+  - web_scanner
+  - scan 
 contact_info:
   name: Peter Clemenko
   url: https://github.com/aoighost

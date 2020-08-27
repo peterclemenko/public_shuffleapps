@@ -9,6 +9,14 @@ contact_info:
 license_info:
   name: Creative Commons
   url: https://github.com/nsacyber/WALKOFF/blob/master/LICENSE.md
+tags:
+  - scan 
+  - network_scan
+  - port_scan 
+categories:
+  - scan 
+  - network_scan
+  - port_scan 
 actions:
   - name: run_scan
     description: Runs an nmap scan on an array of target hosts, returns an array of results as strings
