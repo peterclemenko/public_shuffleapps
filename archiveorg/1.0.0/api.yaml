@@ -3,6 +3,12 @@ app_version: 1.0.0
 name: Archive.org
 description: Archive.org app 
 environment: cloud
+tags:
+  - archive 
+  - search 
+categories:
+  - archive 
+  - search 
 contact_info:
   name: Peter Clemenko
   url: https://github.com/aoighost
