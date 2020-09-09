@@ -27,7 +27,7 @@ class Wappalyzer(AppBase):
         cmd = (['wappalyzer'])
 
         cmd.append(target)
-
+        '''
         if batchSize != "":
             cmd.append("--batch-size=" + batchSize)
 
@@ -55,7 +55,7 @@ class Wappalyzer(AppBase):
         if htmlmaxrows != "":
             cmd.append("--html-max-rows=" + htmlmaxrows)
 
-        
+        '''      
         
         self.logger.info(cmd)
 
