@@ -24,37 +24,39 @@ class Wappalyzer(AppBase):
 
     async def analyze_target(self, target, batchSize, delay, maxdepth, maxurls, maxwait, recursive, useragent, htmlmaxcols, htmlmaxrows):
 
-        cmd = "wappalyzer"
+        cmd = (['wappalyzer'])
+
+        cmd.append(target)
+
         if batchSize != "":
-            cmd = cmd + " --batch-size=" + batchSize
+            cmd.append("--batch-size=" + batchSize)
 
         if delay != "":
-            cmd = cmd + " --delay=" + delay
+            cmd.append("--delay=" + delay)
 
         if maxdepth != "":
-            cmd = cmd + " --max-depth=" + maxdepth
+            cmd.append("--max-depth=" + maxdepth)
 
         if maxurls != "":
-            cmd = cmd + " --max-urls=" + maxurls
+            cmd.append("--max-urls=" + maxurls)
 
         if maxwait != "":
-            cmd = cmd + " --max-wait=" + maxwait
+            cmd.append("--max-wait=" + maxwait)
 
         if recursive == True:
-            cmd = cmd + " --recursive"
+            cmd.append("--recursive")
 
         if useragent != "":
-            cmd = cmd + " --user-agent=" + useragent
+            cmd.append("--user-agent=" + useragent)
 
         if htmlmaxcols != "":
-            cmd = cmd + " --html-max-cols=" + htmlmaxcols
+            cmd.append"--html-max-cols=" + htmlmaxcols)
 
         if htmlmaxrows != "":
-            cmd = cmd + " --html-max-rows=" + htmlmaxrows
+            cmd.append("--html-max-rows=" + htmlmaxrows)
 
-        cmd = cmd + " " + target
         
-        p = subprocess.Popen("wappalyzer", stdout=subprocess.PIPE, shell=True)
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         
         (output, err) = p.communicate()
         p_status = p.wait()
