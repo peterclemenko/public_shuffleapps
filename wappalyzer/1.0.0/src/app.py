@@ -56,6 +56,9 @@ class Wappalyzer(AppBase):
             cmd.append("--html-max-rows=" + htmlmaxrows)
 
         
+        
+        self.logger.info(cmd)
+
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         
         (output, err) = p.communicate()
