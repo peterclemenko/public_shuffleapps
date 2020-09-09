@@ -24,10 +24,11 @@ class Wappalyzer(AppBase):
 
     async def analyze_target(self, target, batchSize, delay, maxdepth, maxurls, maxwait, recursive, useragent, htmlmaxcols, htmlmaxrows):
 
-        cmd = (['wappalyzer'])
-
-        cmd.append(target)
+        '''cmd = (['wappalyzer' ])'''
+        cmd = "wappalyzer https://www.google.com"
         '''
+       
+        cmd.append(target)
         if batchSize != "":
             cmd.append("--batch-size=" + batchSize)
 
