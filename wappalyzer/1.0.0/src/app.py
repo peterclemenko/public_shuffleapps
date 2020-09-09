@@ -64,7 +64,7 @@ class Wappalyzer(AppBase):
         """
         Returns log of what was wappalyzed
         """
-        message = f"target {target} has been wappalyzed"
+        message = f"target {target} has been wappalyzed with command {cmd}"
 
         # This logs to the docker logs
         self.logger.info(message)
