@@ -57,7 +57,7 @@ class Wappalyzer(AppBase):
 
         '''      
         
-        self.logger.info(cmd)
+        '''self.logger.info(cmd) '''
 
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         
