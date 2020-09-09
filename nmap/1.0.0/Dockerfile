@@ -5,7 +5,7 @@ FROM frikky/shuffle:app_sdk as base
 FROM base as builder
 
 # Install all alpine build tools needed for our pip installs
-RUN apk --no-cache add --update alpine-sdk libffi libffi-dev musl-dev openssl-dev nmap
+RUN apk --no-cache add --update alpine-sdk libffi libffi-dev musl-dev openssl-dev
 
 # Install all of our pip packages in a single directory that we can copy to our base image later
 RUN mkdir /install
@@ -15,7 +15,9 @@ RUN pip install --prefix="/install" -r /requirements.txt
 
 # Switch back to our base image and copy in all of our built packages and source code
 FROM base
+RUN apk --no-cache add --update nmap
 COPY --from=builder /install /usr/local
+
 COPY src /app
 
 # Install any binary dependencies needed in our final image

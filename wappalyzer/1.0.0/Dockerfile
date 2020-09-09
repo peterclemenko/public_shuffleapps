@@ -5,9 +5,7 @@ FROM frikky/shuffle:app_sdk as base
 FROM base as builder
 
 # Install all alpine build tools needed for our pip installs
-RUN apk --no-cache add --update alpine-sdk libffi libffi-dev musl-dev openssl-dev nodejs npm
-RUN npm install -g puppeteer --unsafe-perm=true --allow-root
-RUN npm install -g wappalyzer --unsafe-perm=true --allow-root
+RUN apk --no-cache add --update alpine-sdk libffi libffi-dev musl-dev openssl-dev 
 
 # Install all of our pip packages in a single directory that we can copy to our base image later
 RUN mkdir /install
@@ -19,6 +17,11 @@ RUN pip install --prefix="/install" -r /requirements.txt
 FROM base
 COPY --from=builder /install /usr/local
 COPY src /app
+
+
+RUN apk --no-cache add --update nodejs npm
+RUN npm install -g puppeteer --unsafe-perm=true --allow-root
+RUN npm install -g wappalyzer --unsafe-perm=true --allow-root
 
 # Install any binary dependencies needed in our final image
 # RUN apk --no-cache add --update my_binary_dependency

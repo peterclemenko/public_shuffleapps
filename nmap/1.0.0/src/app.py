@@ -4,20 +4,20 @@ import os
 import concurrent.futures
 
 import asyncio
-
-from walkoff_app_sdk.app_base import AppBase
-
 import json
 
+from walkoff_app_sdk.app_base import AppBase
 
 class Nmap(AppBase):
     __version__ = "1.0.0"
     app_name = "nmap"
 
-    def __init__(self, redis, logger):
-        super().__init__(redis, logger)
+    def __init__(self, redis, logger, console_logger=None):
+        super().__init__(redis, logger, console_logger)
 
     async def run_scan(self, targets, options):
+        targets = json.loads(targets)
+
         results = []
         for target in targets:
             nmap_proc = NmapProcess(target, options)
@@ -211,4 +211,4 @@ class Nmap(AppBase):
 
 
 if __name__ == "__main__":
-    asyncio.run(Nmap.run())
+    asyncio.run(Nmap.run(), debug=True)
