@@ -1,7 +1,7 @@
 walkoff_version: 1.0.0
 app_version: 1.0.0
 name: Twint
-description: Twint Twutter OSINT app 
+description: Twint Twitter OSINT app 
 environment: cloud
 contact_info:
   name: "Peter Clemenko"
