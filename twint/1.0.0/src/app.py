@@ -25,6 +25,7 @@ class Twint(AppBase):
     async def get_user_tweets(self, user):
    
         cmd = "twint -u " + user
+        self.logger.info(cmd)
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         
         (output, err) = p.communicate()
