@@ -24,12 +24,10 @@ class Wappalyzer(AppBase):
 
     async def analyze_target(self, target, batchSize, delay, maxdepth, maxurls, maxwait, recursive, useragent, htmlmaxcols, htmlmaxrows):
 
-        '''cmd = (['wappalyzer' ])'''
-        cmd = "wappalyzer https://www.google.com"
-        '''
+        cmd = (['wappalyzer' ])
        
         cmd.append(target)
-        if batchSize != "":
+        '''if batchSize != "":
             cmd.append("--batch-size=" + batchSize)
 
         if delay != "":
@@ -54,25 +52,29 @@ class Wappalyzer(AppBase):
             cmd.append"--html-max-cols=" + htmlmaxcols)
 
         if htmlmaxrows != "":
-            cmd.append("--html-max-rows=" + htmlmaxrows)
+            cmd.append("--html-max-rows=" + htmlmaxrows)'''
 
-        '''      
-        
-        '''self.logger.info(cmd) '''
+        self.logger.info(cmd) 
 
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
-        
-        (output, err) = p.communicate()
-        p_status = p.wait()
+        process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
+        stdout = process.communicate()
+        item = ""
+        if len(stdout[0]) > 0:
+            print("Succesfully ran bash!")
+            item = stdout[0]
+        else:
+            print("FAILED to run bash!")
+            item = stdout[1]
+    
+        try:
+            ret = item.decode("utf-8")
+            self.logger.info(ret)
+            return ret 
+        except:
+            return item
 
-        """
-        Returns log of what was wappalyzed
-        """
-        message = f"target {target} has been wappalyzed with command {cmd}"
+        return item
 
-        # This logs to the docker logs
-        self.logger.info(message)
-        return output
 
 if __name__ == "__main__":
     asyncio.run(Wappalyzer.run(), debug=True)
