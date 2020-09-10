@@ -32,9 +32,9 @@ class Twint(AppBase):
         p_status = p.wait()
 
         """
-        Returns log of what was wappalyzed
+        Returns log of what was twintd
         """
-        message = f"target {user} has been wappalyzed with command {cmd}"
+        message = f"target {user} has been twintd with command {cmd} and output {output}"
 
         # This logs to the docker logs
         self.logger.info(message)
