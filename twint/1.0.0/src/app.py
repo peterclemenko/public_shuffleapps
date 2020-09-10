@@ -21,24 +21,28 @@ class Twint(AppBase):
         self.headers = {"Content-Type": "application/json"}
         super().__init__(redis, logger, console_logger)
 
+    async def get_user_tweets(self, user, shuffle_input):
 
-    async def get_user_tweets(self, user):
-   
-        cmd = "twint -u " + user
+        code = "twint -u " + user
         self.logger.info(cmd)
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
-        
-        (output, err) = p.communicate()
-        p_status = p.wait()
+        process = subprocess.Popen(code, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
+        stdout = process.communicate()
+        item = ""
+        if len(stdout[0]) > 0:
+            print("Succesfully ran bash!")
+            item = stdout[0]
+        else:
+            print("FAILED to run bash!")
+            item = stdout[1]
+    
+        try:
+            ret = item.decode("utf-8")
+            self.logger.info(ret)
+            return ret 
+        except:
+            return item
 
-        """
-        Returns log of what was twintd
-        """
-        message = f"target {user} has been twintd with command {cmd} and output {output}"
-
-        # This logs to the docker logs
-        self.logger.info(message)
-        return output
+        return item
 
 # Run the actual thing after we've checked params
 def run(request):
