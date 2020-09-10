@@ -8,25 +8,6 @@ contact_info:
   url: https://github.com/aoighost
   email: "aoighost137@gmail.com"
 actions:
-
-
-
-
-
-
-
-
-
-  - name: execute_bash
-    description: Runs bash with the data inputted available (TBD)
-    parameters:
-      - name: code 
-        description: The code to run
-        required: true
-        multiline: true
-        example: echo "Hello"
-        schema:
-          type: string 
   - name: get_user_tweets 
     description: Uses Twint to get a user's tweets 
     parameters:
