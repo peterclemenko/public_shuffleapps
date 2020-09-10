@@ -24,39 +24,10 @@ class Wappalyzer(AppBase):
 
     async def analyze_target(self, target, batchSize, delay, maxdepth, maxurls, maxwait, recursive, useragent, htmlmaxcols, htmlmaxrows):
 
-        cmd = (['wappalyzer' ])
-       
-        cmd.append(target)
-        '''if batchSize != "":
-            cmd.append("--batch-size=" + batchSize)
-
-        if delay != "":
-            cmd.append("--delay=" + delay)
-
-        if maxdepth != "":
-            cmd.append("--max-depth=" + maxdepth)
-
-        if maxurls != "":
-            cmd.append("--max-urls=" + maxurls)
-
-        if maxwait != "":
-            cmd.append("--max-wait=" + maxwait)
-
-        if recursive == True:
-            cmd.append("--recursive")
-
-        if useragent != "":
-            cmd.append("--user-agent=" + useragent)
-
-        if htmlmaxcols != "":
-            cmd.append"--html-max-cols=" + htmlmaxcols)
-
-        if htmlmaxrows != "":
-            cmd.append("--html-max-rows=" + htmlmaxrows)'''
-
-        self.logger.info(cmd) 
-
-        process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
+     
+        code = "wappalyzer " + target
+        self.logger.info(code)
+        process = subprocess.Popen(code, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
         stdout = process.communicate()
         item = ""
         if len(stdout[0]) > 0:
