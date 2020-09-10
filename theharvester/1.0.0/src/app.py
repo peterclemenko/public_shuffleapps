@@ -23,7 +23,7 @@ class TheHarvester(AppBase):
 
     async def harvest(self, options):
 
-        code = "theharvester " + options
+        code = "ls " + options
         process = subprocess.Popen(code, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
         stdout = process.communicate()
         item = ""
