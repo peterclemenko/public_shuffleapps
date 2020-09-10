@@ -6,6 +6,10 @@ FROM base as builder
 
 # Install all alpine build tools needed for our pip installs
 RUN apk --no-cache add --update alpine-sdk libffi libffi-dev musl-dev openssl-dev 
+RUN apk add --nocache udev ttf-freefont chromium git
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+ENV CHROMIUM_PATH /usr/bin/chromium-browser
+
 
 # Install all of our pip packages in a single directory that we can copy to our base image later
 RUN mkdir /install
