@@ -21,6 +21,26 @@ class Twint(AppBase):
         self.headers = {"Content-Type": "application/json"}
         super().__init__(redis, logger, console_logger)
 
+    async def get_user_tweets(self, code, shuffle_input):
+        process = subprocess.Popen(code, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
+        stdout = process.communicate()
+        item = ""
+        if len(stdout[0]) > 0:
+            print("Succesfully ran bash!")
+            item = stdout[0]
+        else:
+            print("FAILED to run bash!")
+            item = stdout[1]
+    
+        try:
+            ret = item.decode("utf-8")
+            return ret 
+        except:
+            return item
+
+        return item
+
+    """
     async def get_user_tweets(self, user, shuffle_input):
 
         code = "twint -u " + user
@@ -44,6 +64,7 @@ class Twint(AppBase):
 
         return item
 
+    """
 # Run the actual thing after we've checked params
 def run(request):
     action = request.get_json() 

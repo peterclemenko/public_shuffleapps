@@ -17,7 +17,7 @@ actions:
   - name: analyze_target
     description: Runs Wappalyzer against the target URL
     parameters:
-      - name: target
+      - name: code
         description: URL of the target to archive
         required: true
         schema:

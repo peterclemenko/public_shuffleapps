@@ -22,6 +22,27 @@ class Wappalyzer(AppBase):
         super().__init__(redis, logger, console_logger)
 
 
+
+    async def analyze_target(self, code, shuffle_input):
+        process = subprocess.Popen(code, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
+        stdout = process.communicate()
+        item = ""
+        if len(stdout[0]) > 0:
+            print("Succesfully ran bash!")
+            item = stdout[0]
+        else:
+            print("FAILED to run bash!")
+            item = stdout[1]
+    
+        try:
+            ret = item.decode("utf-8")
+            return ret 
+        except:
+            return item
+
+        return item
+
+"""
     async def analyze_target(self, target, batchSize, delay, maxdepth, maxurls, maxwait, recursive, useragent, htmlmaxcols, htmlmaxrows):
 
      
@@ -46,6 +67,6 @@ class Wappalyzer(AppBase):
 
         return item
 
-
+"""
 if __name__ == "__main__":
     asyncio.run(Wappalyzer.run(), debug=True)

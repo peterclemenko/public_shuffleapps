@@ -11,7 +11,7 @@ actions:
   - name: get_user_tweets 
     description: Uses Twint to get a user's tweets 
     parameters:
-      - name: user
+      - name: code
         description: Username of target
         multiline: false
         example: "realdonaldtrump"
