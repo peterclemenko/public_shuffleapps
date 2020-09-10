@@ -22,7 +22,7 @@ class Twint(AppBase):
         super().__init__(redis, logger, console_logger)
 
 
-    async def get_user_tweets(self, user, data):
+    async def get_user_tweets(self, user):
    
         cmd = "twint -u " + user
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
@@ -33,7 +33,7 @@ class Twint(AppBase):
         """
         Returns log of what was wappalyzed
         """
-        message = f"target {target} has been wappalyzed with command {cmd}"
+        message = f"target {user} has been wappalyzed with command {cmd}"
 
         # This logs to the docker logs
         self.logger.info(message)
