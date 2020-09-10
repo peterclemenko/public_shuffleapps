@@ -48,10 +48,10 @@ def run(request):
     current_execution_id = action.get("execution_id")
 	
     if action and "name" in action and "app_name" in action:
-        asyncio.run(Passivetotal.run(action), debug=True)
+        asyncio.run(Twint.run(action), debug=True)
         return f'Attempting to execute function {action["name"]} in app {action["app_name"]}' 
     else:
         return f'Invalid action'
 
 if __name__ == "__main__":
-    asyncio.run(ArchiveToday.run(), debug=True)
+    asyncio.run(Twint.run(), debug=True)
