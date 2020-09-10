@@ -14,59 +14,12 @@ contact_info:
   url: https://github.com/aoighost
   email: pclemenkoiii@gmail.com
 actions:
-  - name: analyze_target
+  - name: analyze
     description: Runs Wappalyzer against the target URL
     parameters:
-      - name: code
-        description: URL of the target to archive
+      - name: options
+        description: options
         required: true
-        schema:
-          type: string
-      - name: batchSize
-        description: Process links in batches
-        required: false
-        schema:
-          type: string
-      - name: delay
-        description: Wait for ms milliseconds between requests
-        required: false
-        schema:
-          type: string
-      - name: maxdepth
-        description: Don't analyse pages more than num levels deep
-        required: false
-        schema:
-          type: string    
-      - name: maxurls
-        description: Exit when num URLs have been analysed
-        required: false
-        schema:
-          type: string
-      - name: maxwait
-        description: Wait no more than ms milliseconds for page resources to load
-        required: false
-        schema:
-          type: string        
-      - name: recursive
-        description: Follow links on pages (crawler)
-        required: false
-        multiline: false 
-        example: "false"
-        schema:
-          type: bool
-      - name: useragent
-        description: Set the user agent string
-        required: false
-        schema:
-          type: string
-      - name: htmlmaxcols
-        description: Limit the number of HTML characters per line processed
-        required: false
-        schema:
-          type: string
-      - name: htmlmaxrows
-        description: Limit the number of HTML lines processed
-        required: false
         schema:
           type: string
     returns:
