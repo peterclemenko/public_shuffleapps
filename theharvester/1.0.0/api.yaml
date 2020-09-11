@@ -1,7 +1,7 @@
 walkoff_version: 1.0.0
 app_version: 1.0.0
-name: TheHarvester
-description: TheHarvester app 
+name: theHarvester
+description: theHarvester app 
 environment: cloud
 contact_info:
   name: Peter Clemenko
@@ -9,7 +9,7 @@ contact_info:
   email: pclemenkoiii@gmail.com
 actions:
   - name: harvest
-    description: Runs TheHarvester against the target domain for emails
+    description: Runs theHarvester against the target domain for emails
     parameters:
       - name: options
         description: options to use
