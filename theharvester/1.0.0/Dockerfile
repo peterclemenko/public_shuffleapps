@@ -5,13 +5,15 @@ FROM frikky/shuffle:app_sdk as base
 FROM base as builder
 
 # Install all alpine build tools needed for our pip installs
-RUN apk --no-cache add --update alpine-sdk libffi libffi-dev musl-dev openssl-dev
+RUN apk --no-cache add --update alpine-sdk libffi libffi-dev musl-dev openssl-dev git
 
 # Install all of our pip packages in a single directory that we can copy to our base image later
 RUN mkdir /install
 WORKDIR /install
-COPY requirements.txt /requirements.txt
+RUN git clone https://github.com/opsdisk/theHarvester.git
+WORKDIR /install/theHarvester
 RUN pip install --prefix="/install" -r /requirements.txt
+WORKDIR /install
 
 # Switch back to our base image and copy in all of our built packages and source code
 FROM base
